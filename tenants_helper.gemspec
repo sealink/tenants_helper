@@ -6,13 +6,13 @@ require 'tenants_helper/version'
 Gem::Specification.new do |spec|
   spec.name          = 'tenants_helper'
   spec.version       = TenantsHelper::VERSION
-  spec.authors       = ['Akil Madan']
+  spec.authors       = ['Akil Madan'] # TODO: Fix the name and email
   spec.email         = ['akil.madan@outlook.com']
 
   spec.summary       = 'Gem to validate and query tenants using a standardised tenants config'
   spec.description   = 'TenantsHelper provides a centralised way of defining, querying and' \
                        'validating tenants.'
-  spec.homepage      = 'TODO: Need to specify homepage'
+  spec.homepage      = 'https://github.com/sealink/tenants_helper'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`
@@ -24,6 +24,8 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'yamload'
   spec.add_dependency 'anima'
+  spec.add_dependency 'queryable_collection'
+  spec.add_dependency 'memoist'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'

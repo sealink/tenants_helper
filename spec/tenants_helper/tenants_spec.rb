@@ -7,35 +7,18 @@ describe TenantsHelper::Tenants do
       2 => { 'name' => 'mock_tenant2', 'key' => 'abc456' }
     }
   }
-  let(:tenants) { TenantsHelper::Tenants.new }
+  let(:config_dir) { '/workspace/test_project' }
+  let(:config_file) { 'test_config.yml' }
+  let(:config_path) { config_dir + '/' + config_file }
+  let(:tenants) { TenantsHelper.tenants config_path: config_path }
   before do
     yaml_loader_double = double
     allow(Yamload::Loader).to receive(:new).and_return(yaml_loader_double)
     allow(yaml_loader_double).to receive(:content).and_return(tenant_config_hash)
-  end
-
-  context 'when initializing' do
-    context 'without setting up config dir' do
-      it 'should thrown an error' do
-        expect { tenants }.to raise_error(NameError)
-      end
-    end
-
-    context 'setting up with a config dir' do
-      before do
-        TenantsHelper.config_dir = '/tmp'
-      end
-      it 'should load successfully' do
-        expect(tenants).to be_a(TenantsHelper::Tenants)
-      end
-    end
+    allow_any_instance_of(Pathname).to receive(:exist?).and_return(true)
   end
 
   context 'when finding tenants' do
-    before do
-      TenantsHelper.config_dir = '/tmp'
-    end
-
     context 'using find(id)' do
       let(:tenants_find_results) { tenants.find params }
       context 'with valid id' do

@@ -1,22 +1,17 @@
-require 'tenants_helper/version'
-
 module TenantsHelper
   class << self
-    attr_accessor :config_dir
-    attr_accessor :config_filename
-
-    def config_dir
-      return @config_dir unless @config_dir.nil?
-      return Rails.root.join('config') if Rails.root.join('config')
-      nil
-    end
-
-    def config_filename
-      @config_filename ||= :tenants
+    def tenants(config_path:)
+      config_loader = TenantsHelper::ConfigLoader.new(config_path: config_path)
+      config_content = config_loader.load_content
+      TenantsHelper::Tenants.new(tenants_config_hash: config_content)
     end
   end
+
+  Error = Class.new(StandardError)
 end
 
 require 'yamload'
+require 'queryable_collection'
+require 'tenants_helper/version'
+require 'tenants_helper/config_loader'
 require 'tenants_helper/tenants'
-require 'tenants_helper/queryable_collection'

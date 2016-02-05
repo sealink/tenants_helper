@@ -25,8 +25,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tenants_helper_rb.html">lib/tenants_helper.rb</a></td>
-            <td class='right_align'><tt>22</tt></td>
-            <td class='right_align'><tt>13</tt></td>
+            <td class='right_align'><tt>17</tt></td>
+            <td class='right_align'><tt>12</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
       <div class="percent_graph">
         <div class="covered" style="width:100px"></div>
@@ -51,75 +51,60 @@
     <table class="details">
       <tbody>
         <tr class="marked">
-          <td><pre><a name="line2">2</a> require &#39;tenants_helper/version&#39;</pre></td>
+          <td><pre><a name="line2">2</a> module TenantsHelper</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line3">3</a>   class &lt;&lt; self</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line4">4</a>     def tenants(config_path:)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line5">5</a>       config_loader = TenantsHelper::ConfigLoader.new(config_path: config_path)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line6">6</a>       config_content = config_loader.load_content</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line7">7</a>       TenantsHelper::Tenants.new(tenants_config_hash: config_content)</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line3">3</a> </pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line4">4</a> module TenantsHelper</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line5">5</a>   class &lt;&lt; self</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line6">6</a>     attr_accessor :config_dir</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line7">7</a>     attr_accessor :config_filename</pre></td>
+          <td><pre><a name="line8">8</a>     end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line8">8</a> </pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line9">9</a>     def config_dir</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line10">10</a>       return @config_dir unless @config_dir.nil?</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line11">11</a>       return Rails.root.join(&#39;config&#39;) if Rails.root.join(&#39;config&#39;)</pre></td>
+          <td><pre><a name="line9">9</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line12">12</a>       nil</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line13">13</a>     end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line14">14</a> </pre></td>
+          <td><pre><a name="line10">10</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line15">15</a>     def config_filename</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line16">16</a>       @config_filename ||= :tenants</pre></td>
+          <td><pre><a name="line11">11</a>   Error = Class.new(StandardError)</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line17">17</a>     end</pre></td>
+          <td><pre><a name="line12">12</a> end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line18">18</a>   end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line19">19</a> end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line20">20</a> </pre></td>
+          <td><pre><a name="line13">13</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line21">21</a> require &#39;yamload&#39;</pre></td>
+          <td><pre><a name="line14">14</a> require &#39;yamload&#39;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line22">22</a> require &#39;tenants_helper/tenants&#39;</pre></td>
+          <td><pre><a name="line15">15</a> require &#39;queryable_collection&#39;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line23">23</a> require &#39;tenants_helper/queryable_collection&#39;</pre></td>
+          <td><pre><a name="line16">16</a> require &#39;tenants_helper/version&#39;</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line17">17</a> require &#39;tenants_helper/config_loader&#39;</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line18">18</a> require &#39;tenants_helper/tenants&#39;</pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2016-02-03 15:24:02 +1030 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+    <p>Generated on 2016-02-05 17:00:03 +1030 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
 
   </body>
 </html>
