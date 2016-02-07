@@ -6,8 +6,8 @@ require 'tenants_helper/version'
 Gem::Specification.new do |spec|
   spec.name          = 'tenants_helper'
   spec.version       = TenantsHelper::VERSION
-  spec.authors       = ['Akil Madan'] # TODO: Fix the name and email
-  spec.email         = ['akil.madan@outlook.com']
+  spec.authors       = ['Akil Madan']
+  spec.email         = ['support@travellink.com.au']
 
   spec.summary       = 'Gem to validate and query tenants using a standardised tenants config'
   spec.description   = 'TenantsHelper provides a centralised way of defining, querying and' \
@@ -22,10 +22,12 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'yamload'
+  spec.required_ruby_version = '>= 2.1'
+
+  spec.add_dependency 'yamload', '~> 0.2'
   spec.add_dependency 'anima'
-  spec.add_dependency 'queryable_collection'
-  spec.add_dependency 'memoist'
+  spec.add_dependency 'queryable_collection', '~> 0.1'
+  spec.add_dependency 'memoist', '~> 0.14'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
@@ -35,4 +37,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov-rcov'
   spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'travis'
 end

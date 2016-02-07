@@ -3,8 +3,8 @@ require 'spec_helper'
 describe TenantsHelper do
   let(:tenant_config_hash) {
     {
-      'tenant_one' => { 'name' => 'mock_tenant1', 'key' => 'abc123' },
-      'tenant_two' => { 'name' => 'mock_tenant2', 'key' => 'abc456' }
+      'tenant_one' => { 'name' => 'mock_tenant1' },
+      'tenant_two' => { 'name' => 'mock_tenant2' }
     }
   }
 

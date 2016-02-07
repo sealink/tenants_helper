@@ -3,8 +3,8 @@ require 'spec_helper'
 describe TenantsHelper::Tenants do
   let(:tenant_config_hash) {
     {
-      1 => { 'name' => 'mock_tenant1', 'key' => 'abc123' },
-      2 => { 'name' => 'mock_tenant2', 'key' => 'abc456' }
+      1 => { 'name' => 'mock_tenant1' },
+      2 => { 'name' => 'mock_tenant2' }
     }
   }
   let(:config_dir) { '/workspace/test_project' }
@@ -22,14 +22,13 @@ describe TenantsHelper::Tenants do
     context 'using find(id)' do
       let(:tenants_find_results) { tenants.find params }
       context 'with valid id' do
-        let(:query_key) { 1 }
-        let(:query_value) { tenant_config_hash[query_key] }
-        let(:params) { query_key }
+        let(:query_id) { 1 }
+        let(:query_value) { tenant_config_hash[query_id] }
+        let(:params) { query_id }
         it 'should find valid tenant' do
           expect(tenants_find_results).to be_a(TenantsHelper::Tenant)
-          expect(tenants_find_results.id).to eq query_key
+          expect(tenants_find_results.id).to eq query_id
           expect(tenants_find_results.name).to eq query_value.fetch('name')
-          expect(tenants_find_results.key).to eq query_value.fetch('key')
         end
       end
 
@@ -45,14 +44,13 @@ describe TenantsHelper::Tenants do
     context 'using find_by' do
       let(:tenants_find_results) { tenants.find_by params }
       context 'with valid query' do
-        let(:query_key) { 2 }
-        let(:query_value) { tenant_config_hash[query_key] }
+        let(:query_id) { 2 }
+        let(:query_value) { tenant_config_hash[query_id] }
         let(:params) { { name: query_value.fetch('name') } }
         it 'should find result' do
           expect(tenants_find_results).to be_a(TenantsHelper::Tenant)
-          expect(tenants_find_results.id).to eq query_key
+          expect(tenants_find_results.id).to eq query_id
           expect(tenants_find_results.name).to eq query_value.fetch('name')
-          expect(tenants_find_results.key).to eq query_value.fetch('key')
         end
       end
 
@@ -67,14 +65,13 @@ describe TenantsHelper::Tenants do
     context 'using find_by!' do
       let(:tenants_find_results) { tenants.find_by! params }
       context 'with valid query' do
-        let(:query_key) { 2 }
-        let(:query_value) { tenant_config_hash[query_key] }
+        let(:query_id) { 2 }
+        let(:query_value) { tenant_config_hash[query_id] }
         let(:params) { { name: query_value.fetch('name') } }
         it 'should find result' do
           expect(tenants_find_results).to be_a(TenantsHelper::Tenant)
-          expect(tenants_find_results.id).to eq query_key
+          expect(tenants_find_results.id).to eq query_id
           expect(tenants_find_results.name).to eq query_value.fetch('name')
-          expect(tenants_find_results.key).to eq query_value.fetch('key')
         end
       end
 

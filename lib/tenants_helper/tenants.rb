@@ -31,6 +31,6 @@ module TenantsHelper
   end
 
   class Tenant
-    include Anima.new(:id, :name, :key)
+    include Anima.new(:id, :name)
   end
 end
