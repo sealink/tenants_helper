@@ -28,6 +28,12 @@ module TenantsHelper
     def valid?(id)
       !find_by(id: id).nil?
     end
+
+    def name_to_id(name)
+      tenant = find_by(name: name)
+      return nil if !tenant
+      tenant.id
+    end
   end
 
   class Tenant
