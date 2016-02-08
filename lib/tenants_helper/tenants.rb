@@ -1,7 +1,7 @@
 require 'facets/hash/rekey'
 module TenantsHelper
   class Tenants
-    def initialize(tenants_config_hash: tenants_config_hash)
+    def initialize(tenants_config_hash:)
       @tenants = QueryableCollection.create(
         tenants_config_hash.map { |id, attributes|
           new_attributes = attributes.rekey
