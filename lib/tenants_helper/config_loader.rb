@@ -18,7 +18,6 @@ module TenantsHelper
 
     def validate_config_path
       fail(Error, 'Invalid config path') if @config_path.blank? || !pathname.exist?
-      fail(Error, 'Config file must be a yml') unless filename.extname == '.yml'
     end
 
     def pathname
@@ -31,7 +30,7 @@ module TenantsHelper
     end
 
     def filename
-      pathname.basename
+      pathname.basename('.yml')
     end
   end
 end
