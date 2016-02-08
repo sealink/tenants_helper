@@ -35,15 +35,14 @@ describe TenantsHelper::ConfigLoader do
       end
     end
 
-    context 'loading with missing filename' do
-      let(:config_file) { '' }
+    context 'loading with invalid directory into Yamload' do
       before do
         allow_any_instance_of(Pathname).to receive(:exist?).and_return(true)
       end
       it 'should raise an error' do
         expect { tenants_hash_loader.load_content }.to raise_error(
-          TenantsHelper::Error,
-          'Config file must be a yml'
+          IOError,
+          "#{config_dir} is not a valid directory"
         )
       end
     end
