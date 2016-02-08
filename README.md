@@ -44,6 +44,16 @@ Now call TenantsHelper with the path to the config file explicitly passed in
 tenants = TenantsHelper.tenants config_path: config_path
 ```
 
+You may also setup the config file in advance
+
+```ruby
+# Setup config directory and file in advance
+TenantsHelper.set_path config_dir: Rails.root.join('config'), config_filename: 'tenants.yml'
+
+# Now you can call TenantsHelper.tenants in your project without having to pass in config path
+tenants = TenantsHelper.tenants
+```
+
 This will return a TenantsHelper::Tenants object which can then be used to query the tenants config.
 
 ```ruby
@@ -52,6 +62,24 @@ tenant = tenants.find test_tenant_1 # Returns the tenant object corresponding wi
 puts "Tenant name: #{tenant.name}" # The tenant object can then be used to determine the tenant properties
 tenants.find_by(name: 'Test Tenant 2') # Returns the first tenant object that meets the query requirements
 tenants.find_by!(name: 'Test Tenant 2') # Same as above, but gets angry if no tenant is found
+tenants.name_to_id 'Test Tenant 1' # Will return the id associated with that name
+```
+
+## Testing
+
+If you'd like to test code that calls TenantsHelper, you can mock the yml loading mechanism that TenantsHelper uses to load a custom configuration
+
+```ruby
+# Create a custom config hash that complies with the TenantHelper::Tenant schema
+let(:mock_tenants_config) { { '1' => { name: 'mock_tenants_1' }, '2' => { name: 'mock_tenants_2' } } }
+
+# Now mock the TenantsHelper::ConfigLoader
+config_loader_double = double
+allow(TenantsHelper::ConfigLoader).to receive(:new).and_return(config_loader_double)
+allow(config_loader_double).to receive(:load_content).and_return(mock_tenants_config)
+
+# Assuming your mock_tenants_config is correct, TenantsHelper.tenants will load the config sucessfully
+# and create the appropriate list of TenantHelper::Tenant objects
 ```
 
 ## Development
