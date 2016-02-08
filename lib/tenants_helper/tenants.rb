@@ -31,7 +31,7 @@ module TenantsHelper
 
     def name_to_id(name)
       tenant = find_by(name: name)
-      return nil if !tenant
+      return nil unless tenant
       tenant.id
     end
   end

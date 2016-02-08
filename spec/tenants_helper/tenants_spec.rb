@@ -93,11 +93,27 @@ describe TenantsHelper::Tenants do
         expect(tenants_valid_results).to eq false
       end
     end
-
     context 'with valid id' do
       let(:params) { tenant_config_hash.keys[0] }
       it 'should return true' do
         expect(tenants_valid_results).to eq true
+      end
+    end
+  end
+
+  context 'with name_to_id' do
+    let(:tenants_name_to_id_result) { tenants.name_to_id params }
+    context 'with valid name' do
+      let(:query_id) { 1 }
+      let(:params) { tenant_config_hash[query_id].fetch('name') }
+      it 'should find appropriate id' do
+        expect(tenants_name_to_id_result).to eq query_id
+      end
+    end
+    context 'with invalid name' do
+      let(:params) { 'invalid' }
+      it 'should find appropriate id' do
+        expect(tenants_name_to_id_result).to eq nil
       end
     end
   end
