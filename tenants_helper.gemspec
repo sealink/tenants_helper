@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'anima'
   spec.add_dependency 'queryable_collection', '~> 0.1'
   spec.add_dependency 'memoist', '~> 0.14'
+  spec.add_dependency 'facets'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
