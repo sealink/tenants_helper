@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).  
 This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).  
 
+## Unreleased
+
+- [PLAT-183] Ruby 3.1 add coverage-kit
+
 ## 0.2.0
 
 - [TT-8611] Update to build with github actions / ruby 3.0
