@@ -1,5 +1,7 @@
 # TenantsHelper
 
+[![Coverage Status](https://coveralls.io/repos/github/sealink/tenants_helper/badge.svg?branch=master)](https://coveralls.io/github/sealink/tenants_helper?branch=master)
+
 TenantsHelper is a gem designed to help you load and query a tenants configuration file.
 A tenants configuration is a very specific YML config file in your project that is in the following format:
 

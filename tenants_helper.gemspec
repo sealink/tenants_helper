@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.1'
 
-  spec.add_dependency 'yamload', '~> 0.2'
+  spec.add_dependency 'yamload'
   spec.add_dependency 'anima'
   spec.add_dependency 'queryable_collection', '~> 0.1'
   spec.add_dependency 'memoist', '~> 0.14'
@@ -34,9 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'dotenv'
   spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'simplecov-rcov'
-  spec.add_development_dependency 'coveralls'
+  spec.add_development_dependency 'coverage-kit'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'pry-byebug'
 end
