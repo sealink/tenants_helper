@@ -1,11 +1,13 @@
 # Change Log
+
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/).  
-This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).  
+This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).
 
 ## Unreleased
 
 - [PLAT-183] Ruby 3.1 add coverage-kit
+- [PLAT-1175] Update to Ruby 3.2
 
 ## 0.2.0
 
